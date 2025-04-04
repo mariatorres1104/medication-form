@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Prescripción</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario de Prescripción</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 2rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-    <h1>Prescripción Médica</h1>
-    <form id="medication-form">
-        <label for="medication">Medicamento:</label>
-        <input type="text" id="medication" name="medication" required>
-        
-        <label for="dosage">Dosis:</label>
-        <input type="text" id="dosage" name="dosage" required>
-        
-        <label for="frequency">Frecuencia:</label>
-        <input type="text" id="frequency" name="frequency" required>
-        
-        <button type="submit">Enviar</button>
-    </form>
+  <h1>Prescripción Médica</h1>
+  <form id="medication-form">
+    <label for="status">Estado</label>
+    <select id="status" required>
+      <option value="completed">Completado</option>
+      <option value="active">Activo</option>
+      <option value="cancelled">Cancelado</option>
+    </select>
 
-    <script src="script.js"></script>
+    <label for="intent">Intención</label>
+    <select id="intent" required>
+      <option value="original-order">Orden original</option>
+      <option value="refill">Renovación</option>
+    </select>
+
+    <label for="medication">Medicamento</label>
+    <input type="text" id="medication" placeholder="Ej: Acetaminofén 500mg" required />
+
+    <label for="subject">ID del Paciente</label>
+    <input type="text" id="subject" placeholder="Ej: Patient/1001218488" required />
+
+    <label for="authoredOn">Fecha de prescripción</label>
+    <input type="date" id="authoredOn" required />
+
+    <label for="requester">ID del Médico</label>
+    <input type="text" id="requester" placeholder="Ej: Practitioner/1019902265" required />
+
+    <label for="dosage">Instrucciones de dosis</label>
+    <textarea id="dosage" placeholder="Ej: Tomar 1 tableta cada 6 horas" required></textarea>
+
+    <button type="submit">Enviar Prescripción</button>
+  </form>
+
+  <script src="script.js"></script>
 </body>
 </html>
