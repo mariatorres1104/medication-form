@@ -31,10 +31,10 @@ document.getElementById("medication-form").addEventListener("submit", async func
         });
 
         if (response.ok) {
-            alert("Formulario enviado con éxito ✅");
+            alert("Formulario enviado con éxito");
             document.getElementById("medication-form").reset();
         } else {
-            alert("❌ Error al enviar el formulario");
+            alert("Error al enviar el formulario");
         }
     } catch (error) {
         console.error("Error al conectar con la API:", error);
