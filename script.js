@@ -1,19 +1,18 @@
 document.getElementById("medication-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    // Captura de datos desde el formulario (asegúrate de tener estos campos con estos IDs)
     const data = {
-        status: "completed",  
-        intent: "original-order",
+        status: document.getElementById("status").value,
+        intent: document.getElementById("intent").value,
         medicationCodeableConcept: {
             text: document.getElementById("medication").value
         },
         subject: {
-            reference: "Patient/" + document.getElementById("patientId").value
+            reference: document.getElementById("subject").value
         },
         authoredOn: document.getElementById("authoredOn").value,
         requester: {
-            reference: "Practitioner/" + document.getElementById("requesterId").value
+            reference: document.getElementById("requester").value
         },
         dosageInstruction: [
             {
@@ -32,10 +31,10 @@ document.getElementById("medication-form").addEventListener("submit", async func
         });
 
         if (response.ok) {
-            alert("Formulario enviado con éxito");
+            alert("Formulario enviado con éxito ✅");
             document.getElementById("medication-form").reset();
         } else {
-            alert("Error al enviar el formulario");
+            alert("❌ Error al enviar el formulario");
         }
     } catch (error) {
         console.error("Error al conectar con la API:", error);
